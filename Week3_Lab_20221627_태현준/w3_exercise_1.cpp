@@ -4,7 +4,7 @@ using namespace std;
 
 
 string my_remove_chars(string original_string, string remove)
-{
+{ 
   int count = 0;
   string new_string;
 
