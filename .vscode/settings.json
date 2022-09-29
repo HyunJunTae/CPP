@@ -32,6 +32,7 @@
     "stdio.h": "c",
     "무한반복.C": "cpp",
     "stdlib.h": "c",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "ostream": "cpp"
   }
 }
