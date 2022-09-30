@@ -3,18 +3,22 @@
 #include <cstdio>
 #include <stdlib.h>
 #include <string.h>
-#define MAXLEN 32
 
 class Student {
 private:
     int year = 1;
     int id;
-    char* name = (char*)malloc(MAXLEN);
+    char* name;
+    size_t length;
 public:
     Student(int id, const char* name) {
         this->id = id;
-        strncpy(this->name, name, MAXLEN);
-        this->name[MAXLEN] = '\0';
+
+        length = strlen(name);
+        printf("%d\n", length);
+        this->name = (char*)malloc(length);
+        memcpy(this->name, name, strlen(name));
+        // this->name[strlen(name)] = '\0';
     }
 
     void cat(Student *s) {
@@ -30,8 +34,9 @@ public:
     } // 얘도 돼.
 
     void cat3(Student *s) {
+        realloc(this->name, this->length + s->length);
         strcat(this->name, s->name);
-    }
+    } // 잘되는디.
 
     void Print() {
         printf("Id : %d\n", id);

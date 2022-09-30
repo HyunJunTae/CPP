@@ -1,5 +1,5 @@
 #include <cstdio>
-#include "my-string.hpp"
+#include "R_my-string.hpp"
 
 // TODO: Fill in these functions.
 
@@ -24,6 +24,8 @@ void MyString::Clear() {
         for(int i=0; i<k; i++) {
             this->arr[i] = '\0';
         }
+	
+	this->length = strlen(this->arr);
 }
 
 // Append 's' at the end of this string.
@@ -32,7 +34,7 @@ void MyString::Append(MyString *s) {
 	// realloc(s->arr, s->length+1);
 
 	int i = this->length + s->length;
-	realloc(this->arr, i);
+	realloc(this->arr, i+1);
 	strcat(this->arr, s->arr);
 	this->arr[i] = '\0';
 
@@ -50,15 +52,13 @@ void MyString::Insert(MyString *s, int idx) {
 	if (idx > i)
 		return;
 
-	realloc(this->arr, this->length + s->length);
+	realloc(this->arr, this->length + s->length + 1);
 
-	for(int j=i; j>idx; j--) 
-		this->arr[j+s->length-1] = this->arr[j-1];
+	for(int j=idx; j<=i; j++) 
+		this->arr[j+(s->length)] = this->arr[j];
 
-	int k = s->length;
-	for(int j=i; j>idx; j--) {
-		this->arr[j-1] = s->arr[k-1];
-		k--;
+	for(int j=0; j<(s->length); j++) { // ABC/ DEF      A DEFBC
+		this->arr[idx+j] = s->arr[j];
 	}
 	this->length = strlen(this->arr);
 }
@@ -72,20 +72,21 @@ void MyString::Remove(int idx, int n) {
 
 	if (idx > i)
 		return;
-	printf("1 : %s\n", this->arr);
+	if (n > i)
+		return;
+
 	for(int j=idx; j<idx+n; j++) 
 		this->arr[j] = '\0';
-	printf("1 : %s\n", this->arr);
+
 	for(int j=0; j<i-idx-n; j++) {
 		this->arr[idx+j] = arr[idx+n+j];
 	}
-	printf("1 : %s\n", this->arr);	
+
 	if (i-idx-n >= n) {
 		for (int j=0; j<n; j++) {
 			this->arr[i-j-1] = '\0';
 		}
 	}
-	printf("1 : %s\n", this->arr);
 
 	this->length = strlen(this->arr);
 
