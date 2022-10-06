@@ -26,13 +26,13 @@ size_t MyString::GetLength() {
 // Make the string into an empty string.
 void MyString::Clear() {
 
-	char a[1];
-	strcpy(this->arr, a);
+	// char a[1];
+	// strcpy(this->arr, a);
 
-	// int k = GetLength();
-    //     for(int i=0; i<k; i++) {
-    //         this->arr[i] = '\0';
-    //     }
+	int k = GetLength();
+        for(int i=0; i<k; i++) {
+            this->arr[i] = '\0';
+        }
 
 	this->length = 0;
 
