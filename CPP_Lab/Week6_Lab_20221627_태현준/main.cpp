@@ -27,7 +27,7 @@ void test() {
     // Test with the second lecture.
     lec2.AddStudent(20220001);
     lec2.AddStudent(20220002);
-    lec2.AddStudent(20220003);
+    // lec2.AddStudent(20220003);
     lec2.AddStudent(20220004);
     lec2.AddStudent(20220004);
     // We should not be able to register more than MAX_STUDENT students.
@@ -44,6 +44,10 @@ void test() {
     }
     if (lec2.GetGradeOf(20220002, &grade)) {
         cout << "Grade of 20220002: " << GradeToString(grade) << endl;
+    }
+    lec2.SetGradeOf(20220004, B);
+    if (lec2.GetGradeOf(20220004, &grade)) {
+        cout << "Grade of 20220004: " << GradeToString(grade) << endl;
     }
 }
 
