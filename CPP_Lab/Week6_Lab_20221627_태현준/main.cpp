@@ -29,6 +29,7 @@ void test() {
     lec2.AddStudent(20220002);
     lec2.AddStudent(20220003);
     lec2.AddStudent(20220004);
+    lec2.AddStudent(20220004);
     // We should not be able to register more than MAX_STUDENT students.
     lec2.AddStudent(20220005);
     lec2.SetGradeOf(20220005, C);
