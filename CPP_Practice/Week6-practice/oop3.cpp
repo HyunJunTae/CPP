@@ -11,7 +11,7 @@ private:
     int id;
     char name[MAXLEN+1];
 public:
-    UnivMem(int i, char *n) {
+    UnivMem(int i, const char *n) {
         id = i;
         strcpy(name, n);
     }
@@ -26,7 +26,7 @@ class Student: public UnivMem {
 private:
     double GPA;
 public:
-    Student(int i, char *n, double g) 
+    Student(int i, const char *n, double g) 
     :UnivMem(i, n)  {
         GPA = g;
     }
@@ -36,7 +36,7 @@ class Professor: public UnivMem {
 private:
     char office[MAXLEN+1];
 public:
-    Professor(int i, char *n, char *o)
+    Professor(int i, const char *n, const char *o)
     :UnivMem(i, n) {
         strcpy(office, o);
     }
@@ -55,6 +55,7 @@ int main(void) {
     // UnivMem 의 member인 2칸짜리 배열을 만들고, 그 배열에 p, s 의 주소를 넣는다.
     // members = [&p, &s]가 됨.
     // 왜 UnivMem으로 배열 만듬? Print() 사용하기 위해서.
+    // 함수 사용할 때 int 가져가려면 함수 괄호에서도 (int num) 이런식으로 해주는 거랑 같음.
     UnivMem *members[2];
     Professor p(0, "Jaeseung Choi", "AS711");
     Student s(1, "GangSeo Kim", 4.3);

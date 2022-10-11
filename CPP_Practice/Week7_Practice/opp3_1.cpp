@@ -1,6 +1,3 @@
-// class inheritance 에서 protected member에 대한 내용.
-
-
 #include <stdio.h>
 #include <string.h>
 #define MAXLEN 32
@@ -11,12 +8,13 @@ protected:
     char name[MAXLEN+1];
 public:
 
-    UnivMem(){}; // 빈 생성자를 추가로 정의해야 정상적으로 작동함.
+    UnivMem(){};
 
     UnivMem(int i, const char *n) {
         id = i;
         strcpy(name, n);
     }
+
     void Print() {
         printf("Id : %d\n", id);
         printf("Name : %s\n", name);
@@ -29,10 +27,13 @@ private:
     double GPA;
 public:
     Student(int i, const char *n, double g) {
-        // 부모 클래스에서 member를 protected로 선언하면, 자식 클래스에서 바로 사용 가능.
         id = i;
         strcpy(name, n);
         GPA = g;
+    }
+
+    void Print(){
+        printf("Undergrad : %s (%d)\n", name, id);
     }
 };
 
@@ -44,6 +45,10 @@ public:
         id = i;
         strcpy(name, n);
         strcpy(office, o);
+    }
+
+    void Print(){
+        printf("Prof : %s (%d)\n", name, id);
     }
 };
 
@@ -58,7 +63,6 @@ int main(void) {
 
     a->Print();
     b->Print();
-    // printf("%d %s %s", p.id, p.name, p.office);
 
     return 0;
 }
