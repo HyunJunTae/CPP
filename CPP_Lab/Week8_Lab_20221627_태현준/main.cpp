@@ -28,14 +28,14 @@ void printShapes(Shape ** shapes) {
 }
 
 void test() {
-    Rectangle r(1, 2, 3, 5);
-    RightTriangle t(5, 5, 5, 5);
+    Rectangle r(1, 2, 5, 4);
+    RightTriangle t(5, 5, 3, 4);
     Shape* shapes[3];
     shapes[0] = &r;
     shapes[1] = &t;
     shapes[2] = NULL; // Let's use NULL pointer to indicate the end of array.
-    // MoveShapes(shapes, 10, 20);
-    // doubleShapes(shapes);
+    MoveShapes(shapes, 10, 20);
+    doubleShapes(shapes);
     rotateShapes(shapes);
     printShapes(shapes);
 }

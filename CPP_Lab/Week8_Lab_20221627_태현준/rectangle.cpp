@@ -20,8 +20,8 @@ bool Rectangle::Shift(int delta_x, int delta_y) {
 }
 
 bool Rectangle::DoubleSize() {
-    int a = right_low.GetX() * 2;
-    int b = right_low.GetY() * 2;
+    int a = right_low.GetX() + (right_low.GetX() - left_up.GetX());
+    int b = right_low.GetY() + (right_low.GetY() - left_up.GetY());
 
     right_low.SetXY(a, b);
     // right_low(a, b); 생성자니까 여기서 안씀.
