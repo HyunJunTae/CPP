@@ -9,7 +9,7 @@
             "compilerPath": "C:/MinGW/bin/g++.exe",
             "cStandard": "${default}",
             "cppStandard": "${default}",
-            "intelliSenseMode": "windows-gcc-x64",
+            "intelliSenseMode": "windows-gcc-x86",
             "compilerArgs": []
         }
     ],
