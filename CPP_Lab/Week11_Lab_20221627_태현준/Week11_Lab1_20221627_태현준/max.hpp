@@ -6,10 +6,8 @@ template <typename T>
 void find_max(T arr[], int n) {
 
     if (arr[0] == '\0' && n == 0){
-        printf("Onggibot!\n");
         return;
     }
-
 
     T max_num = arr[0];
     int max_point = 0;
