@@ -13,6 +13,7 @@ int main (void) {
     onggibot1['d'] = 4;
     onggibot1['e'] = 5;
     onggibot1['f'] = 6;
+    onggibot1['A'] = 7;
 
 
     for (std::map<char, int>::iterator it = onggibot1.begin(); it != onggibot1.end(); it++) {
