@@ -22,6 +22,9 @@ int main(void)
     }
 
 
+    
+
+
     // 출력
     for (iter=ong.begin(); iter!=ong.end(); iter++) {
         cout << iter->first << ',' << iter->second << " ";
