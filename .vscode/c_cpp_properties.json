@@ -3,9 +3,18 @@
         {
             "name": "windows-gcc-x86",
             "includePath": [
-                "${workspaceFolder}/**",
-                "C:\\MinGW\\include"
+                "${workspaceFolder}/**"
             ],
+            "browse": {
+                "path": [
+                    "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
+                    "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
+                    "C:/MinGW/include/*",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
             "compilerPath": "C:/MinGW/bin/g++.exe",
             "cStandard": "${default}",
             "cppStandard": "${default}",
@@ -15,3 +24,34 @@
     ],
     "version": 4
 }
+
+// {
+//     "configurations": [
+//         {
+//             "name": "Win32",
+//             "includePath": [
+//                 "${workspaceFolder}/**"
+//             ],
+//             "defines": [
+//                 "_DEBUG",
+//                 "UNICODE",
+//                 "_UNICODE"
+//             ],
+//             "browse": {
+//                 "path": [
+//                     "C:/MinGW/lib/gcc/mingw32/6.3.0/include",
+//                     "C:/MinGW/lib/gcc/mingw32/6.3.0/include-fixed",
+//                     "C:/MinGW/include/*",
+//                     "${workspaceRoot}"
+//                 ],
+//                 "limitSymbolsToIncludedHeaders": true,
+//                 "databaseFilename": ""
+//             },
+//             "compilerPath": "C:/MinGW/bin/g++.exe",
+//             "cStandard": "c11",
+//             "cppStandard": "c++17",
+//             "intelliSenseMode": "clang-x86"
+//         }
+//     ],
+//     "version": 4
+// }
