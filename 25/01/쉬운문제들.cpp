@@ -1,5 +1,5 @@
 #include <iostream>
-#include <vector>
+#include <string>
 #include <algorithm>
 using namespace std;
 
@@ -10,37 +10,22 @@ int main(void) {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int n ,m;
-    cin >> n >> m;
+    string pal;
+    cin >> pal;
 
-    vector<int> baskets(n);
+    string::iterator iter1 = pal.begin();
+    string::iterator iter2 = pal.end()-1;
 
-    for (int i=0; i<n; i++) {
-        baskets[i] = i+1;
-    }
-
-
-    int a, b, imsinum;
-    for (int i=0; i<m; i++) {
-        cin >> a >> b;
-        a--;
-        b--;
-
-        int count = (b-a+1)/2;
-
-        for (int j=0; j<count; j++) {
-            imsinum = baskets[a];
-            baskets[a] = baskets[b];
-            baskets[b] = imsinum;
-            a++;
-            b--;
+    for (int i=0; i<(pal.length())/2; i++) {
+        if (*iter1 != *iter2) {
+            cout << "0";
+            return 0;
         }
-
+        iter1++;
+        iter2--;
     }
 
-    for (int i=0; i<n; i++) {
-        cout << baskets[i] << " ";
-    }
+    cout << "1";
 
     return 0;
 }
