@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/user/OneDrive/바탕 화면/CPP/24/11",
-      "program": "c:/Users/user/OneDrive/바탕 화면/CPP/24/11/build/Debug/outDebug",
+      "cwd": "c:/Users/user/Desktop/CPP/26/1",
+      "program": "c:/Users/user/Desktop/CPP/26/1/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
       "setupCommands": [
