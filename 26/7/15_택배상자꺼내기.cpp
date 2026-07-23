@@ -1,75 +1,71 @@
-#include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
-#define TOTALTIME 10000000
 
 using namespace std;
 
-int solution(vector<vector<int>> signals)
+int solution(int n, int w, int num)
 {
-
     int answer = 0;
 
-    int n = signals.size();
-
-    // yellow : 노란색 불이 들어오는 시간만 기록하는 배열
-    // 첫 번째 신호등부터 마지막 신호등까지 순차적으로 검사하며
-    // i번째 신호까지 노란색인 시간들을 기록.
-    // 초기에는 모든 시간에 대해 노란불이라고 가정.
-    vector<int> yellow;
-
-    for (int i = 1; i <= TOTALTIME; i++)
+    // w=1인 경우는 예외로 처리
+    if (w == 1)
     {
-        yellow.push_back(i);
+        answer = n - num + 1;
+        return answer;
     }
 
-    int time;
-    // 모든 신호등에 대해서
-    for (int i = 0; i < n; i++)
+    // 만약에 한 층에 다 있는 경우 예외로 처리
+    else if (n <= w)
     {
-
-        vector<int> temp;
-
-        // 0. 시간을 1으로 설정
-        time = 1;
-
-        int time_green = signals[i][0];
-        int time_yellow = signals[i][1];
-        int time_red = signals[i][2];
-
-        // 시간 TOTALTIME 초까지
-        while (time <= TOTALTIME)
-        {
-
-            // 1. 초록불 시간 건너뛰기
-            time += time_green;
-
-            // 2. 노란불 시간이 yellow에도 있으면, temp에 추가
-            for (int i = time; i < time + time_yellow; i++)
-            {
-                if (binary_search(yellow.begin(), yellow.end(), i))
-                {
-                    temp.push_back(i);
-                }
-            }
-            time += time_yellow;
-
-            // 3. 빨간불 시간 건너뛰기
-            time += time_red;
-        }
-
-        // 만약 겹치는게 하나도 안 남아있으면 -1 출력 후 종료
-        if (temp.empty())
-        {
-            return -1;
-        }
-
-        // 신호등 하나 처리 끝나면 yellow를 temp로 덮어쓰기
-        yellow = temp;
+        return 1;
     }
 
-    answer = yellow[0];
+    // num이 있는 층 구하기
+    int current_stack = (num - 1) / w + 1;
+
+    // 최고층 구하기
+    int highest_stack = n / w;
+    if (n % w != 0)
+        ++highest_stack;
+
+    // 일단 이 만큼은 무조건 빼야함
+    answer = highest_stack - current_stack;
+
+    // num이 현재 층에서 몇 번째인지 계산
+    int m = (num - 1) % w + 1;
+
+    // num이 있는 층이 왼쪽부터인지 오른쪽부터인지 계산
+    bool current_fromleft = (current_stack % 2 == 1) ? true : false;
+
+    // 만약 오른쪽부터이면, 숫자를 재조정
+    if (!current_fromleft)
+    {
+        m = w - m + 1;
+    }
+
+    // 최고층이 왼쪽부터인지 오른쪽부터인지 계산
+    bool highest_fromleft = (highest_stack % 2 == 1) ? true : false;
+
+    // 최고층에 몇 개가 있는지 계산
+    int highest_num = (n - 1) % w + 1;
+
+    int highest_left, highest_right;
+    // 최고층에 어디부터 어디까지 있는지 계산
+    if (highest_fromleft)
+    {
+        highest_left = 1;
+        highest_right = highest_num;
+    }
+    else
+    {
+        highest_left = w - highest_num + 1;
+        highest_right = w;
+    }
+
+    if (highest_left <= m && m <= highest_right)
+    {
+        ++answer;
+    }
 
     return answer;
 }
