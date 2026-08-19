@@ -10,7 +10,7 @@ using namespace std;
 bool check(int m, int n, int h, int w, const vector<vector<int>>& drops, int mid, int& temp_m, int& temp_n) {
     
     // 1. 빗방울 떨어졌나 안떨어졌나 2차원 vector 에 저장. 비가 오면 1로 표시. 테두리 한 칸은 0으로 채우기
-    vector<vector<int>> rains (m, vector(n, 0));
+    vector<vector<int>> rains (m, vector<int>(n, 0));
     
     for(int i=0; i<mid; ++i) {
         rains[drops[i][0]][drops[i][1]] = 1;
